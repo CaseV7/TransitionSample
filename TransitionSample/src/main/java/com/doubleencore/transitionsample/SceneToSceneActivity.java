@@ -29,10 +29,13 @@ public class SceneToSceneActivity extends Activity {
         //grab the root element from the XML
         RelativeLayout sceneBase = (RelativeLayout)findViewById(R.id.scene_base);
 
-        //Create a scene using the root element from the initial scene, combined with a new layout
-        final Scene scene2 = new Scene(sceneBase, (ViewGroup)getLayoutInflater().inflate(R.layout.scene_2, sceneBase, false));
+        //Create a new layout for the second scene
+        ViewGroup scene2Group = (ViewGroup)getLayoutInflater().inflate(R.layout.scene_2, sceneBase, false);
+        //Create a scene using the root element from the initial scene
+        //plus the new group we just created
+        final Scene scene2 = new Scene(sceneBase, scene2Group);
 
-        //When the user clicks the button transition from scene 1 to scene 2 by changing the bounds of the controls
+        //When the user clicks the button transition from scene1 to scene2
         Button button = (Button)sceneBase.findViewById(R.id.press_me);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
